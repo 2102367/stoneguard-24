@@ -22,13 +22,15 @@ public class UIManager : MonoBehaviour
 
     public GameStateManager gsm;
     public HealthBar healthBar;
-
     public HealthBar statueBar;
+    public HealthBar waveBar;
+
     void Start()
     {
         gsm = GameObject.Find("GameStateManager").GetComponent<GameStateManager>();
         healthBar.setMaxHealth(5);
         statueBar.setMaxHealth(10);
+        waveBar.setMaxHealth(gsm.waveEnemyCount);
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
 
         healthBar.setHealth(gsm.getLives());
         statueBar.setHealth(gsm.getStatueLives());
+        waveBar.setHealth(gsm.getEnemiesKilled());
 
     
         if (gsm.lives <= 2) {
